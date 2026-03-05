@@ -126,5 +126,4 @@ canyonjs-playwright-python/
 - pytest-playwright >= 0.4.0
 
 ## CI
-
 推送到 GitHub 后，GitHub Actions 会自动运行测试。失败时可在 Actions 页面下载 trace 文件，在 [trace.playwright.dev](https://trace.playwright.dev/) 查看。
