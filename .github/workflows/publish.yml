@@ -1,0 +1,32 @@
+name: Publish to PyPI
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write  # 用于 Trusted Publishing (OIDC)
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install build tools
+        run: python -m pip install --upgrade build
+
+      - name: Build package
+        run: python -m build
+
+      - name: Publish to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          # 方式一：使用 API Token（在仓库 Settings > Secrets 中添加 PYPI_API_TOKEN）
+          # 方式二：Trusted Publishing - 在 PyPI 配置 OIDC 后无需 token
+          # 详见 https://docs.pypi.org/trusted-publishers/
+          password: ${{ secrets.PYPI_API_TOKEN }}
