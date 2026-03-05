@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "canyonjs-playwright"
+version = "0.1.0"
+description = "Istanbul 覆盖率收集 for Playwright Python，类似 @canyonjs/playwright"
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.8"
+dependencies = [
+    "playwright>=1.40.0",
+    "pytest-playwright>=0.4.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+]
+
+[project.urls]
+Repository = "https://github.com/canyonjs/canyonjs-playwright-python"
+
+[tool.setuptools.packages.find]
+where = ["src"]
